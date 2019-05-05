@@ -29,12 +29,32 @@ class PlayerCreatorTest {
     }
 
     @Test
-    public void Given_GoodValue_When_AskingToChooseClass_Then_CreatePlayerWithCorrectClass() {
+    public void Given_ValueIsOne_When_AskingToChooseClass_Then_CreatePlayerWithWarriorClass() {
         setInValues("1");
 
         PlayerCreator playerCreator = new PlayerCreator();
         playerCreator.createPlayer();
 
         assertTrue(playerCreator.getPlayer() instanceof Warrior);
+    }
+
+    @Test
+    public void Given_ValueIsTwo_When_AskingToChooseClass_Then_CreatePlayerWithArcherClass() {
+        setInValues("2");
+
+        PlayerCreator playerCreator = new PlayerCreator();
+        playerCreator.createPlayer();
+
+        assertTrue(playerCreator.getPlayer() instanceof Archer);
+    }
+
+    @Test
+    public void Given_ValueIsThree_When_AskingToChooseClass_Then_CreatePlayerWithMageClass() {
+        setInValues("3");
+
+        PlayerCreator playerCreator = new PlayerCreator();
+        playerCreator.createPlayer();
+
+        assertTrue(playerCreator.getPlayer() instanceof Mage);
     }
 }
