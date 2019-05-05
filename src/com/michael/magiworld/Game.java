@@ -5,9 +5,11 @@ public class Game {
     private Player player2;
 
     public void createPlayers() {
-        PlayerManager playerManager = new PlayerManager();
+        PlayerCreator playerCreator = new PlayerCreator();
 
-        player1 = playerManager.createPlayer();
-        player2 = playerManager.createPlayer();
+        System.out.println("Création du personnage du joueur 1");
+        player1 = playerCreator.createPlayer();
+        System.out.println("Création du personnage du joueur 2");
+        player2 = playerCreator.createPlayer();
     }
 }
