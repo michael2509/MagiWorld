@@ -6,7 +6,12 @@ import java.util.Scanner;
 public class PlayerCreator {
     private Player player;
 
-
+    /**
+     * Choose a class in console
+     * Create a player with the chosen class
+     * And return the created player
+     * @return  the created player
+     */
     public Player createPlayer() {
         int classChoice = chooseClass();
 

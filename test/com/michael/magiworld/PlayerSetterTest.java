@@ -105,7 +105,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints, output[2]);
@@ -120,7 +120,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints, output[2]);
@@ -135,7 +135,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints, output[2]);
@@ -150,7 +150,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints, output[3]);
@@ -165,7 +165,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints, output[3]);
@@ -180,7 +180,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints, output[3]);
@@ -195,7 +195,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Vous devez attribuer les " + remainingPoints + " restants en intelligence", output[4]);
@@ -210,7 +210,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Vous devez attribuer les " + remainingPoints + " restants en intelligence", output[4]);
@@ -225,7 +225,7 @@ class PlayerSetterTest {
         PlayerSetter playerSetter = new PlayerSetter();
         playerSetter.setAttributes(player);
 
-        String remainingPoints = playerSetter.getRemainingPoints();
+        int remainingPoints = playerSetter.getRemainingPoints();
 
         String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
         assertEquals("Erreur de saisie ! Vous devez attribuer les " + remainingPoints + " restants en intelligence", output[4]);

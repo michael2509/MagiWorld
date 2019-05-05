@@ -27,20 +27,20 @@ public class Player {
         return intelligence;
     }
 
-    public void setLevelAndLifePoints(int level) {
-        this.level = level;
-        this.lifePoints = level * 5;
+    public void setLevelAndLifePoints(int value) {
+        level = value;
+        lifePoints = level * 5;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
+    public void setStrength(int value) {
+        strength = value;
     }
 
-    public void setAgility(int agility) {
-        this.agility = agility;
+    public void setAgility(int value) {
+        agility = value;
     }
 
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
+    public void setIntelligence(int value) {
+        intelligence = value;
     }
 }
