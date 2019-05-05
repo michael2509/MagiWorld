@@ -46,7 +46,7 @@ class PlayerSetterTest {
 
     @Test
     public void Given_AnswerString_When_AskingToSetLevel_Then_AskAgainQuestion() {
-        setInValues("dix\n5\n5\n0");
+        setInValues("dix\n10\n5\n5\n0");
 
         Player player = new Player();
 
@@ -71,7 +71,7 @@ class PlayerSetterTest {
     }
 
     @Test
-    public void Given_AnswerTooLowValue_When_AskingToSetLevel_Then_AskAgainQuestion() {
+    public void Given_AnswerZero_When_AskingToSetLevel_Then_AskAgainQuestion() {
         setInValues("0\n10\n5\n5\n0");
 
         Player player = new Player();
@@ -113,7 +113,7 @@ class PlayerSetterTest {
 
     @Test
     public void Given_AnswerTooHighValue_When_AskingToSetStrength_Then_AskAgainQuestion() {
-        setInValues("10\n120\n5\n5\n0");
+        setInValues("10\n60\n5\n5\n0");
 
         Player player = new Player();
 
@@ -158,7 +158,7 @@ class PlayerSetterTest {
 
     @Test
     public void Given_AnswerTooHighValue_When_AskingToSetAgility_Then_AskAgainQuestion() {
-        setInValues("10\n5\n120\n5\n0");
+        setInValues("10\n5\n60\n5\n0");
 
         Player player = new Player();
 
@@ -203,7 +203,7 @@ class PlayerSetterTest {
 
     @Test
     public void Given_AnswerTooHighValue_When_AskingToSetStrengthOrAgility_Then_AskAgainQuestion() {
-        setInValues("10\n5\n5\n120\n0");
+        setInValues("10\n5\n5\n60\n0");
 
         Player player = new Player();
 
