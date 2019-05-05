@@ -29,32 +29,82 @@ class PlayerCreatorTest {
     }
 
     @Test
-    public void Given_ValueIsOne_When_AskingToChooseClass_Then_CreatePlayerWithWarriorClass() {
+    public void Given_AnswerOne_When_AskingToChooseClass_Then_CreatePlayerWithWarriorClass() {
         setInValues("1");
 
         PlayerCreator playerCreator = new PlayerCreator();
         playerCreator.createPlayer();
 
-        assertTrue(playerCreator.getPlayer() instanceof Warrior);
+        Player newPlayer = playerCreator.getPlayer();
+
+        assertTrue(newPlayer instanceof Warrior);
     }
 
     @Test
-    public void Given_ValueIsTwo_When_AskingToChooseClass_Then_CreatePlayerWithArcherClass() {
+    public void Given_AnswerTwo_When_AskingToChooseClass_Then_CreatePlayerWithArcherClass() {
         setInValues("2");
 
         PlayerCreator playerCreator = new PlayerCreator();
         playerCreator.createPlayer();
 
-        assertTrue(playerCreator.getPlayer() instanceof Archer);
+        Player newPlayer = playerCreator.getPlayer();
+
+        assertTrue(newPlayer instanceof Archer);
     }
 
     @Test
-    public void Given_ValueIsThree_When_AskingToChooseClass_Then_CreatePlayerWithMageClass() {
+    public void Given_AnswerThree_When_AskingToChooseClass_Then_CreatePlayerWithMageClass() {
         setInValues("3");
 
         PlayerCreator playerCreator = new PlayerCreator();
         playerCreator.createPlayer();
 
-        assertTrue(playerCreator.getPlayer() instanceof Mage);
+        Player newPlayer = playerCreator.getPlayer();
+
+        assertTrue(newPlayer instanceof Mage);
+    }
+
+    @Test
+    public void Given_AnswerString_When_AskingToChooseClass_Then_AskAgainQuestion() {
+        setInValues("mage\n1");
+
+        PlayerCreator playerCreator = new PlayerCreator();
+        playerCreator.createPlayer();
+
+        String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
+        assertEquals("Erreur de saisie ! Veuillez saisir un chiffre de 1 à 3 (1 : Guerrier, 2 : Rôdeur, 3 : Mage)", output[1]);
+    }
+
+    @Test
+    public void Given_AnswerTooHighValue_When_AskingToChooseClass_Then_AskAgainQuestion() {
+        setInValues("15\n1");
+
+        PlayerCreator playerCreator = new PlayerCreator();
+        playerCreator.createPlayer();
+
+        String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
+        assertEquals("Erreur de saisie ! Veuillez saisir un chiffre de 1 à 3 (1 : Guerrier, 2 : Rôdeur, 3 : Mage)", output[1]);
+    }
+
+    @Test
+    public void Given_AnswerTooLowValue_When_AskingToChooseClass_Then_AskAgainQuestion() {
+        setInValues("0\n1");
+
+        PlayerCreator playerCreator = new PlayerCreator();
+        playerCreator.createPlayer();
+
+        String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
+        assertEquals("Erreur de saisie ! Veuillez saisir un chiffre de 1 à 3 (1 : Guerrier, 2 : Rôdeur, 3 : Mage)", output[1]);
+    }
+
+    @Test
+    public void Given_AnswerNegativeValue_When_AskingToChooseClass_Then_AskAgainQuestion() {
+        setInValues("-5\n1");
+
+        PlayerCreator playerCreator = new PlayerCreator();
+        playerCreator.createPlayer();
+
+        String[] output = outContent.toString().replace("\r\n", "\n").split("\n");
+        assertEquals("Erreur de saisie ! Veuillez saisir un chiffre de 1 à 3 (1 : Guerrier, 2 : Rôdeur, 3 : Mage)", output[1]);
     }
 }
