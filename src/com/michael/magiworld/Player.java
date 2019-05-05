@@ -1,6 +1,6 @@
 package com.michael.magiworld;
 
-public abstract class Player {
+public class Player {
     private int level;
     private int lifePoints;
     private int strength;
@@ -26,9 +26,6 @@ public abstract class Player {
     public int getIntelligence() {
         return intelligence;
     }
-
-    public abstract String getClassName();
-    public abstract String getGreeting();
 
     public void setLevelAndLifePoints(int level) {
         this.level = level;
