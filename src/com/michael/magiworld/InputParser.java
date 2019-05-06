@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputParser {
-    private Scanner sc = new Scanner(System.in);
 
     /**
      * Check inputValue,
@@ -15,9 +14,8 @@ public class InputParser {
      * @param errorMessage
      * @return the correct inputValue
      */
-    public int parseInput(int lowerLimit, int higherLimit, String errorMessage) {
-        int inputValue = 0;
-        boolean goodResponse;
+    public int parseInput(Scanner sc, int lowerLimit, int higherLimit, String errorMessage) {
+        int inputValue = 0; boolean goodResponse;
 
         do {
             try {
@@ -38,9 +36,8 @@ public class InputParser {
         return inputValue;
     }
 
-    public int parseInputForIntelligence(int condition, String errorMessage) {
-        int inputValue = 0;
-        boolean goodResponse;
+    public int parseInputForIntelligence(Scanner sc, int condition, String errorMessage) {
+        int inputValue = 0; boolean goodResponse;
 
         do {
             try {

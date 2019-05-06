@@ -1,6 +1,9 @@
 package com.michael.magiworld;
 
+import java.util.Scanner;
+
 public class PlayerSetter {
+    private Scanner sc = new Scanner(System.in);
     private int remainingPoints;
 
     /**
@@ -26,31 +29,31 @@ public class PlayerSetter {
 
         String errorMessage = "Erreur de saisie ! Veuillez saisir un nombre entre 1 et 100";
 
-        int level = inputParser.parseInput(1, 100, errorMessage);
+        int newLevel = inputParser.parseInput(sc,1, 100, errorMessage);
 
-        player.setLevelAndLifePoints(level);
+        player.setLevelAndLifePoints(newLevel);
     }
 
     private void setStrength(Player player) {
-        System.out.println("Force du personnage ? (Il vous reste " + remainingPoints + " à attribuer)");
+        System.out.println("Force du personnage ? (Il vous reste " + remainingPoints + " points à attribuer)");
         InputParser inputParser = new InputParser();
 
         String errorMessage = "Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints;
 
-        int strength = inputParser.parseInput(0, remainingPoints, errorMessage);
+        int newStrength = inputParser.parseInput(sc,0, remainingPoints, errorMessage);
 
-        player.setStrength(strength);
+        player.setStrength(newStrength);
     }
 
     private void setAgility(Player player) {
-        System.out.println("Agilité du personnage ? (Il vous reste " + remainingPoints + " à attribuer)");
+        System.out.println("Agilité du personnage ? (Il vous reste " + remainingPoints + " points à attribuer)");
         InputParser inputParser = new InputParser();
 
         String errorMessage = "Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints;
 
-        int agility = inputParser.parseInput(0, remainingPoints, errorMessage);
+        int newAgility = inputParser.parseInput(sc,0, remainingPoints, errorMessage);
 
-        player.setAgility(agility);
+        player.setAgility(newAgility);
     }
 
     private void setIntelligence(Player player) {
@@ -59,12 +62,8 @@ public class PlayerSetter {
 
         String errorMessage = "Erreur de saisie ! Vous devez attribuer les " + remainingPoints + " restants en intelligence";
 
-        int intelligence = inputParser.parseInputForIntelligence(remainingPoints, errorMessage);
+        int newIntelligence = inputParser.parseInputForIntelligence(sc, remainingPoints, errorMessage);
 
-        player.setIntelligence(intelligence);
-    }
-
-    public int getRemainingPoints() {
-        return remainingPoints;
+        player.setIntelligence(newIntelligence);
     }
 }
