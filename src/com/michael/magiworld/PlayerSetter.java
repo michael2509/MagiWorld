@@ -3,67 +3,112 @@ package com.michael.magiworld;
 import java.util.Scanner;
 
 public class PlayerSetter {
-    private Scanner sc = new Scanner(System.in);
-    private int remainingPoints;
+    private Scanner scanner = new Scanner(System.in);
+    private int remainingPoints = 100;
 
     /**
      * Set all player's attributes
      * @param player the player that we add attributes to
      */
-    public void setAttributes(Player player) {
-        setLevelAndLifePoints(player);
+    public Player setAttributes(Player player) {
+        setAttribute("Level And LifePoints", player);
         remainingPoints = player.getLevel();
 
-        setStrength(player);
+        setAttribute("Strength", player);
         remainingPoints -= player.getStrength();
 
-        setAgility(player);
+        setAttribute("Agility", player);
         remainingPoints -= player.getAgility();
 
-        setIntelligence(player);
+        setAttribute("Intelligence", player);
+
+        return player;
     }
 
-    private void setLevelAndLifePoints(Player player) {
-        System.out.println("Niveau du personnage ?");
-        InputParser inputParser = new InputParser();
-
-        String errorMessage = "Erreur de saisie ! Veuillez saisir un nombre entre 1 et 100";
-
-        int newLevel = inputParser.parseInput(sc,1, 100, errorMessage);
-
-        player.setLevelAndLifePoints(newLevel);
+    private void setAttribute(String attributeName, Player player) {
+        displayAttributeQuestion(attributeName);
+        int attributeValue = chooseAttributeValue(attributeName);
+        assignAttributeValue(player, attributeName, attributeValue);
     }
 
-    private void setStrength(Player player) {
-        System.out.println("Force du personnage ? (Il vous reste " + remainingPoints + " points à attribuer)");
-        InputParser inputParser = new InputParser();
+    private void displayAttributeQuestion(String attributeName) {
+        String attributeQuestion = "";
 
-        String errorMessage = "Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints;
+        switch (attributeName) {
+            case "Level And LifePoints" :
+                attributeQuestion = "Niveau du personnage ?";
+                break;
+            case "Strength" :
+                attributeQuestion = "Force du personnage ? (Il vous reste " + remainingPoints + " points à attribuer)";
+                break;
+            case "Agility" :
+                attributeQuestion = "Agilité du personnage ? (Il vous reste " + remainingPoints + " points à attribuer)";
+                break;
+            case "Intelligence" :
+                attributeQuestion = "Intelligence du personnage ? (Il vous reste " + remainingPoints + " points à attribuer)";
+                break;
+        }
 
-        int newStrength = inputParser.parseInput(sc,0, remainingPoints, errorMessage);
-
-        player.setStrength(newStrength);
+        System.out.println(attributeQuestion);
     }
 
-    private void setAgility(Player player) {
-        System.out.println("Agilité du personnage ? (Il vous reste " + remainingPoints + " points à attribuer)");
-        InputParser inputParser = new InputParser();
+    private String getCorrectErrorMsg(String attributeName) {
+        String errorMessage = "";
 
-        String errorMessage = "Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints;
+        if (remainingPoints == 0)
+            errorMessage = "Erreur de saisie ! Vous n'avez plus de point à attribuer. Tapez 0";
+        else {
+            switch (attributeName) {
+                case "Level And LifePoints" :
+                    errorMessage = "Erreur de saisie ! Veuillez saisir un nombre entre 1 et 100";
+                    break;
+                case "Strength" :
+                case "Agility" :
+                    errorMessage = "Erreur de saisie ! Veuillez saisir un nombre de 0 à " + remainingPoints;
+                    break;
+                case "Intelligence" :
+                    errorMessage = "Erreur de saisie ! Vous devez attribuer les " + remainingPoints + " restants en intelligence";
+                    break;
+            }
+        }
 
-        int newAgility = inputParser.parseInput(sc,0, remainingPoints, errorMessage);
-
-        player.setAgility(newAgility);
+        return errorMessage;
     }
 
-    private void setIntelligence(Player player) {
-        System.out.println("Intelligence du personnage ? (Vous devez attribuer les " + remainingPoints + " points restants en intelligence)");
+    private int chooseAttributeValue(String attributeName) {
         InputParser inputParser = new InputParser();
+        String errorMessage = getCorrectErrorMsg(attributeName);
+        int attributeValue = 0;
 
-        String errorMessage = "Erreur de saisie ! Vous devez attribuer les " + remainingPoints + " restants en intelligence";
+        switch (attributeName) {
+            case "Level And LifePoints" :
+                attributeValue = inputParser.parseInput(scanner, 1, 100, errorMessage);
+                break;
+            case "Strength" :
+            case "Agility" :
+                attributeValue = inputParser.parseInput(scanner, 0, remainingPoints, errorMessage);
+                break;
+            case "Intelligence" :
+                attributeValue = inputParser.parseInputForIntelligence(scanner, remainingPoints, errorMessage);
+                break;
+        }
 
-        int newIntelligence = inputParser.parseInputForIntelligence(sc, remainingPoints, errorMessage);
+        return attributeValue;
+    }
 
-        player.setIntelligence(newIntelligence);
+    private void assignAttributeValue(Player player, String attributeName, int attributeValue) {
+        switch (attributeName) {
+            case "Level And LifePoints" :
+                player.setLevelAndLifePoints(attributeValue);
+                break;
+            case "Strength" :
+                player.setStrength(attributeValue);
+            case "Agility" :
+                player.setAgility(attributeValue);
+                break;
+            case "Intelligence" :
+                player.setIntelligence(attributeValue);
+                break;
+        }
     }
 }

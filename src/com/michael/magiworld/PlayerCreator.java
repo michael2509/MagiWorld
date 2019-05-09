@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class PlayerCreator {
     private Player player;
-    private Scanner sc = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     /**
      * Choose a class in console
@@ -34,8 +34,11 @@ public class PlayerCreator {
         System.out.println("Veuillez choisir la classe de votre personnage (1 : Guerrier, 2 : Rôdeur, 3 : Mage)");
 
         InputParser inputParser = new InputParser();
+
         String errorMessage = "Erreur de saisie ! Veuillez saisir un chiffre de 1 à 3 (1 : Guerrier, 2 : Rôdeur, 3 : Mage)";
-        int classChoice = inputParser.parseInput(sc, 1, 3, errorMessage);
+
+        int classChoice = inputParser.parseInput(scanner, 1, 3, errorMessage);
+
         return classChoice;
     }
 

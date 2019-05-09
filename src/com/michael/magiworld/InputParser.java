@@ -15,7 +15,8 @@ public class InputParser {
      * @return the correct inputValue
      */
     public int parseInput(Scanner sc, int lowerLimit, int higherLimit, String errorMessage) {
-        int inputValue = 0; boolean goodResponse;
+        int inputValue = 0;
+        boolean goodResponse;
 
         do {
             try {
@@ -37,7 +38,8 @@ public class InputParser {
     }
 
     public int parseInputForIntelligence(Scanner sc, int condition, String errorMessage) {
-        int inputValue = 0; boolean goodResponse;
+        int inputValue = 0;
+        boolean goodResponse;
 
         do {
             try {

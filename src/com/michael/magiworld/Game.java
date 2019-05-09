@@ -1,47 +1,38 @@
 package com.michael.magiworld;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Game {
-    private Player player1;
-    private Player player2;
+    private int numberOfPlayers;
+    private List<Player> players = new ArrayList<Player>();
 
-    /**
-     * Create players,
-     * Set players attributes
-     * Then fight
-     */
-    public void playGame() {
-        createPlayer(1);
-        setPlayer(1);
-
-        createPlayer(2);
-        setPlayer(2);
+    public Game(int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
     }
 
-    private void createPlayer(int playerPosition) {
-        PlayerCreator playerCreator = new PlayerCreator();
+    public void initPlayers() {
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Player newPlayer = createPlayer(i);
+            Player newPlayerWithAttributes = setPlayerAttributes(newPlayer);
 
+            players.add(newPlayerWithAttributes);
+        }
+    }
+
+    private Player createPlayer(int playerIndex) {
+        int playerPosition = playerIndex + 1;
         System.out.println("Création du personnage du joueur " + playerPosition);
 
-        switch (playerPosition) {
-            case 1 :
-                player1 = playerCreator.createPlayer();
-                break;
-            case 2 :
-                player2 = playerCreator.createPlayer();
-                break;
-        }
+        PlayerCreator playerCreator = new PlayerCreator();
+        Player newPlayer = playerCreator.createPlayer();
+        return newPlayer;
     }
 
-    private void setPlayer(int playerPosition) {
+    private Player setPlayerAttributes(Player player) {
         PlayerSetter playerSetter = new PlayerSetter();
 
-        switch (playerPosition) {
-            case 1 :
-                playerSetter.setAttributes(player1);
-                break;
-            case 2 :
-                playerSetter.setAttributes(player2);
-                break;
-        }
+        Player playerWithAttributes = playerSetter.setAttributes(player);
+        return  playerWithAttributes;
     }
 }
